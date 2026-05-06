@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cardápio Digital</title>
+  <meta name="description" content="Cardápio digital online — peça pelo WhatsApp." />
+  <link rel="stylesheet" href="/menu.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="logo">🍔</span>
+        <div>
+          <h1>Sabor Express</h1>
+          <p>Peça pelo WhatsApp</p>
+        </div>
+      </div>
+      <button id="cart-btn" class="cart-btn" aria-label="Abrir carrinho">
+        🛒 <span id="cart-count" class="badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="categories container" id="categories"></nav>
+
+  <main class="container">
+    <div id="status" class="status"></div>
+    <section id="products" class="grid"></section>
+  </main>
+
+  <!-- Drawer carrinho -->
+  <aside id="cart-drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Seu Pedido</h2>
+      <button id="close-cart" class="icon-btn" aria-label="Fechar">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="drawer-footer">
+      <div class="total-row">
+        <span>Total</span>
+        <strong id="cart-total">R$ 0,00</strong>
+      </div>
+      <button id="checkout-btn" class="btn btn-primary">Finalizar pelo WhatsApp</button>
+    </div>
+  </aside>
+  <div id="overlay" class="overlay"></div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="/menu.js"></script>
+</body>
+</html>
