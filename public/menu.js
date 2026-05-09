@@ -4,7 +4,7 @@
  * ========================================================= */
 const CONFIG = {
   // Substitua pela URL do seu Google Apps Script Web App.
-  API_URL: "",
+  API_URL: "https://script.google.com/macros/s/AKfycbxN1oX0rdwqRI6gP4Rx9TBzQyWldv_oNV1FeuzZK9nSm5VhKXnM0OhWo3VgHUYdqBAaiA/exec",
   // Número do WhatsApp com DDI (somente dígitos). Ex: 5511999999999
   WHATSAPP: "5511999999999",
   STORAGE_KEY: "cardapio_cart_v1",
