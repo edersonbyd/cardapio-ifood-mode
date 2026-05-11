@@ -3,8 +3,8 @@
  * Configure abaixo a URL da API e o número do WhatsApp.
  * ========================================================= */
 const CONFIG = {
-  // Substitua pela URL do seu Google Apps Script Web App.
-  API_URL: "https://script.google.com/macros/s/AKfycbxN1oX0rdwqRI6gP4Rx9TBzQyWldv_oNV1FeuzZK9nSm5VhKXnM0OhWo3VgHUYdqBAaiA/exec",
+  // Endpoint interno que lê os produtos da planilha do Google Sheets.
+  API_URL: "/api/menu",
   // Número do WhatsApp com DDI (somente dígitos). Ex: 5511999999999
   WHATSAPP: "5598984940944",
   STORAGE_KEY: "cardapio_cart_v1",
