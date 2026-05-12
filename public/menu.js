@@ -83,6 +83,19 @@ async function loadProducts() {
   }
 }
 
+// Converte links do Google Drive em URLs diretas (funcionam em <img>)
+function resolveImageUrl(url) {
+  if (!url) return "";
+  const s = String(url).trim();
+  // /file/d/ID/view  ou  /file/d/ID
+  let m = s.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (m) return `https://lh3.googleusercontent.com/d/${m[1]}=w800`;
+  // open?id=ID  ou  uc?id=ID
+  m = s.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (m) return `https://lh3.googleusercontent.com/d/${m[1]}=w800`;
+  return s;
+}
+
 // Normaliza dados (aceita campos com/sem acento)
 function normalize(arr) {
   return arr.map((p) => ({
@@ -90,7 +103,7 @@ function normalize(arr) {
     nome: p.nome ?? p.Nome ?? "Sem nome",
     preco: Number(p.preco ?? p["preço"] ?? p.Preco ?? p.Preço ?? 0),
     descricao: p.descricao ?? p["descrição"] ?? p.Descricao ?? "",
-    imagem: p.imagem ?? p.Imagem ?? "",
+    imagem: resolveImageUrl(p.imagem ?? p.Imagem ?? ""),
     categoria: p.categoria ?? p.Categoria ?? "Outros",
   }));
 }
