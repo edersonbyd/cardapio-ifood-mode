@@ -3,7 +3,11 @@
  * Configure abaixo a URL da API e o número do WhatsApp.
  * ========================================================= */
 const CONFIG = {
-  // Endpoint interno que lê os produtos da planilha do Google Sheets.
+  // ID da planilha do Google Sheets (precisa estar "Qualquer pessoa com o link: Leitor").
+  SHEET_ID: "1yELWMHl4AMWPbiLrJqIQ9C08zCOdruUQysWl4gu5cjQ",
+  SHEET_NAME: "Cardapio",
+  // Endpoint interno (usado quando rodando no Lovable com server functions).
+  // Em produção estática (Vercel/GitHub Pages) cai no fetch direto do CSV público.
   API_URL: "/api/menu",
   // Número do WhatsApp com DDI (somente dígitos). Ex: 5511999999999
   WHATSAPP: "5598984940944",
