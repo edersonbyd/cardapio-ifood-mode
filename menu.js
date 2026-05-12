@@ -12,15 +12,38 @@ const CONFIG = {
 
 // Dados de exemplo (usados quando API_URL está vazia ou falha)
 const MOCK_PRODUCTS = [
-  { id: 1, nome: "Hambúrguer Artesanal", preco: 28.9, descricao: "Pão brioche, blend 180g, queijo cheddar e bacon crocante.", imagem: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600", categoria: "Hambúrgueres" },
-  { id: 2, nome: "X-Bacon Duplo", preco: 34.5, descricao: "Dois blends, queijo prato, bacon duplo e molho da casa.", imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600", categoria: "Hambúrgueres" },
-  { id: 3, nome: "Cheese Salad", preco: 26.0, descricao: "Blend 150g, alface americana, tomate e cheddar derretido.", imagem: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600", categoria: "Hambúrgueres" },
-  { id: 4, nome: "Pizza Margherita", preco: 49.9, descricao: "Molho de tomate, muçarela de búfala e manjericão fresco.", imagem: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600", categoria: "Pizzas" },
-  { id: 5, nome: "Pizza Calabresa", preco: 52.0, descricao: "Calabresa fatiada, cebola roxa e azeitonas pretas.", imagem: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600", categoria: "Pizzas" },
-  { id: 6, nome: "Batata Frita Grande", preco: 18.0, descricao: "Porção generosa, crocante por fora e macia por dentro.", imagem: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600", categoria: "Acompanhamentos" },
-  { id: 7, nome: "Onion Rings", preco: 16.5, descricao: "Anéis de cebola empanados, servidos com molho especial.", imagem: "https://images.unsplash.com/photo-1639024471283-03518883512d?w=600", categoria: "Acompanhamentos" },
-  { id: 8, nome: "Coca-Cola 350ml", preco: 7.0, descricao: "Lata gelada 350ml.", imagem: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600", categoria: "Bebidas" },
-  { id: 9, nome: "Suco Natural Laranja", preco: 9.5, descricao: "500ml de suco natural feito na hora.", imagem: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600", categoria: "Bebidas" },
+  
+{ id: 1, nome: "Bolo Vulcão", preco: 28.9, descricao: "Ninho", imagem: "/public/imagem/logo-amanda.jpeg", categoria: "Bolos e Tortas" },
+{ id: 2, nome: "Bolo Vulcão", preco: 34.5, descricao: "Chocolate", imagem: "/public/imagem/bolo-vulcao.jpeg", categoria: "Bolos e Tortas" },
+{ id: 3, nome: "Bolo Vulcão", preco: 26.0, descricao: "Chocolate e Ninho", imagem: "/public/imagem/bolo-vulcao.jpeg", categoria: "Bolos e Tortas" },
+{ id: 4, nome: "Mini Vulcão", preco: 28.9, descricao: "Ninho", imagem: "/public/imagem/mini-vulcao.jpeg", categoria: "Bolos e Tortas" },
+{ id: 5, nome: "Mini Vulcão", preco: 34.5, descricao: "Chocolate", imagem: "/public/imagem/mini-vulcao.jpeg", categoria: "Bolos e Tortas" },
+{ id: 6, nome: "Mini Vulcão", preco: 26.0, descricao: "Chocolate e Ninho", imagem: "/public/imagem/mini-vulcao.jpeg", categoria: "Bolos e Tortas" },
+{ id: 7, nome: "Caseirinho", preco: 49.9, descricao: "Chocolate", imagem: "/public/imagem/caseirinho.jpeg", categoria: "Doces Finos" },
+{ id: 8, nome: "Caseirinho", preco: 49.9, descricao: "Dois Amores", imagem: "/public/imagem/caseirinho.jpeg", categoria: "Doces Finos" },
+{ id: 9, nome: "Caseirinho", preco: 49.9, descricao: "Maracujá", imagem: "/public/imagem/caseirinho.jpeg", categoria: "Doces Finos" },
+{ id: 10, nome: "Caseirinho", preco: 49.9, descricao: "Trigo", imagem: "/public/imagem/caseirinho.jpeg", categoria: "Doces Finos" },
+{ id: 11, nome: "Caseirinho", preco: 49.9, descricao: "Formigueiro", imagem: "/public/imagem/caseirinho.jpeg", categoria: "Doces Finos" },
+{ id: 12, nome: "Fatia de Torta", preco: 52.0, descricao: "Chocolate", imagem: "/public/imagem/fatia-torta.jpeg", categoria: "Doces Finos" },
+{ id: 13, nome: "Fatia de Torta", preco: 52.0, descricao: "Chocolate e Ninho", imagem: "/public/imagem/fatia-torta.jpeg", categoria: "Doces Finos" },
+{ id: 14, nome: "Fatia de Torta", preco: 52.0, descricao: "Frutas vermelhas", imagem: "/public/imagem/fatia-torta.jpeg", categoria: "Doces Finos" },
+{ id: 15, nome: "Fatia de Torta", preco: 52.0, descricao: "Maracujá", imagem: "/public/imagem/fatia-torta.jpeg", categoria: "Doces Finos" },
+{ id: 16, nome: "Fatia de Torta", preco: 52.0, descricao: "Abacaxi", imagem: "/public/imagem/fatia-torta.jpeg", categoria: "Doces Finos" },
+{ id: 17, nome: "Fatia de Torta", preco: 52.0, descricao: "Olho de Sogra", imagem: "/public/imagem/fatia-torta.jpeg", categoria: "Doces Finos" },
+{ id: 18, nome: "Fatia de Torta", preco: 52.0, descricao: "Surpresa de uva", imagem: "/public/imagem/fatia-torta.jpeg", categoria: "Doces Finos" },
+{ id: 19, nome: "Fatia de Torta", preco: 52.0, descricao: "Surpresa de morango", imagem: "/public/imagem/fatia-torta.jpeg", categoria: "Doces Finos" },
+{ id: 20, nome: "Trufas", preco: 4.0, descricao: "Chocolate com recheio de Ninho", imagem: "/public/imagem/trunfas.jpeg", categoria: "Tradicionais e Gourmet" },
+{ id: 21, nome: "Docinhos", preco: 7.0, descricao: "Beijinho", imagem: "/public/imagem/docinhos.jpeg", categoria: "Tradicionais e Gourmet" },
+{ id: 22, nome: "Docinhos", preco: 7.0, descricao: "Ninho", imagem: "/public/imagem/docinhos.jpeg", categoria: "Tradicionais e Gourmet" },
+{ id: 23, nome: "Docinhos", preco: 7.0, descricao: "Brigadeiro", imagem: "/public/imagem/docinhos.jpeg", categoria: "Tradicionais e Gourmet" },
+{ id: 24, nome: "Docinhos", preco: 7.0, descricao: "Romeu e Julieta", imagem: "/public/imagem/docinhos.jpeg", categoria: "Tradicionais e Gourmet" },
+{ id: 25, nome: "Docinhos", preco: 7.0, descricao: "Churros", imagem: "/public/imagem/docinhos.jpeg", categoria: "Tradicionais e Gourmet" },
+{ id: 26, nome: "Docinhos", preco: 7.0, descricao: "Surpre de Uva ", imagem: "/public/imagem/docinhos.jpeg", categoria: "Tradicionais e Gourmet" },
+{ id: 27, nome: "Docinhos", preco: 7.0, descricao: "Casadinho", imagem: "/public/imagem/docinhos.jpeg", categoria: "Tradicionais e Gourmet" },
+{ id: 28, nome: "Coca-Cola 350ml", preco: 7.0, descricao: "Lata 350ml.", imagem: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600", categoria: "Bebidas" },
+{ id: 29, nome: "Jesus 350ml", preco: 9.5, descricao: "Lata 350ml", imagem: "/public/imagem/jesus-350ml.webp", categoria: "Bebidas" },
+{ id: 30, nome: "Fanta 350ml", preco: 9.5, descricao: "Lata 350ml", imagem: "/public/imagem/fanta-350ml.webp", categoria: "Bebidas" },
+
 ];
 
 // Estado
