@@ -87,27 +87,86 @@ function bindEvents() {
 async function loadProducts() {
   showStatus(`<div class="spinner"></div><p style="margin-top:10px">Carregando cardápio...</p>`);
   try {
+    let data = null;
+
+    // 1) Tenta a server route interna (/api/menu) — funciona no ambiente Lovable.
     if (CONFIG.API_URL) {
-      const res = await fetch(CONFIG.API_URL);
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
-      products = normalize(data);
-    } else {
-      // sem API configurada → usa mock
-      await new Promise((r) => setTimeout(r, 300));
-      products = normalize(MOCK_PRODUCTS);
+      try {
+        const res = await fetch(CONFIG.API_URL, { headers: { Accept: "application/json" } });
+        if (res.ok) {
+          const ct = res.headers.get("content-type") || "";
+          if (ct.includes("application/json")) {
+            data = await res.json();
+          }
+        }
+      } catch (_) { /* ignora e cai no fallback */ }
     }
+
+    // 2) Fallback: lê o CSV publicado da planilha Google Sheets (funciona em qualquer host estático: Vercel, etc.)
+    if (!data && CONFIG.SHEET_ID) {
+      data = await fetchSheetAsCsv(CONFIG.SHEET_ID, CONFIG.SHEET_NAME);
+    }
+
+    if (!data || !data.length) throw new Error("Sem dados da planilha");
+
+    products = normalize(data);
     statusEl.innerHTML = "";
     renderCategories();
     renderProducts();
   } catch (err) {
-    console.error(err);
-    showStatus(`<p style="color:var(--primary)">⚠️ Não foi possível carregar o cardápio.</p>
-      <p style="font-size:13px;margin-top:6px">Exibindo itens de demonstração.</p>`);
+    console.error("Falha ao carregar cardápio:", err);
+    showStatus(`<p style="color:var(--primary)">⚠️ Não foi possível carregar o cardápio da planilha.</p>
+      <p style="font-size:13px;margin-top:6px">Verifique se a planilha está compartilhada como "Qualquer pessoa com o link". Exibindo itens de demonstração.</p>`);
     products = normalize(MOCK_PRODUCTS);
     renderCategories();
     renderProducts();
   }
+}
+
+// Busca a aba como CSV (endpoint público do Google Sheets) e converte em array de objetos.
+async function fetchSheetAsCsv(sheetId, sheetName) {
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("CSV HTTP " + res.status);
+  const csv = await res.text();
+  return parseCsv(csv);
+}
+
+// Parser CSV simples com suporte a aspas e vírgulas dentro de células.
+function parseCsv(text) {
+  const rows = [];
+  let row = [], cell = "", inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') { inQuotes = false; }
+      else cell += c;
+    } else {
+      if (c === '"') inQuotes = true;
+      else if (c === ",") { row.push(cell); cell = ""; }
+      else if (c === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+      else if (c === "\r") { /* ignora */ }
+      else cell += c;
+    }
+  }
+  if (cell.length || row.length) { row.push(cell); rows.push(row); }
+  if (!rows.length) return [];
+  const headers = rows[0].map((h) => h.trim().toLowerCase());
+  return rows.slice(1)
+    .filter((r) => r.some((c) => String(c).trim() !== ""))
+    .map((r) => {
+      const obj = {};
+      headers.forEach((h, i) => {
+        let val = r[i] ?? "";
+        if (h === "preco" || h === "preço") {
+          const n = Number(String(val).replace(",", "."));
+          val = isNaN(n) ? 0 : n;
+        }
+        obj[h] = val;
+      });
+      return obj;
+    });
 }
 
 // Converte links do Google Drive em URLs diretas (funcionam em <img>)
