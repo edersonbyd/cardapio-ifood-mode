@@ -313,8 +313,17 @@ function updateCartUI() {
   });
 }
 
-function openCart() { drawer.classList.add("open"); overlay.classList.add("show"); }
-function closeCart() { drawer.classList.remove("open"); overlay.classList.remove("show"); }
+function isDesktop() { return window.matchMedia("(min-width: 901px)").matches; }
+function openCart() {
+  drawer.classList.add("open");
+  document.body.classList.add("drawer-open");
+  if (!isDesktop()) overlay.classList.add("show");
+}
+function closeCart() {
+  drawer.classList.remove("open");
+  document.body.classList.remove("drawer-open");
+  overlay.classList.remove("show");
+}
 
 // ====== Checkout WhatsApp ======
 function checkout() {
