@@ -200,6 +200,13 @@ html,body{ background:var(--bg); color:var(--text); font-family:-apple-system,Bl
 }
 .overlay.show{ opacity:1; visibility:visible; }
 
+/* Desktop: drawer fixado ao lado, conteúdo desloca */
+@media (min-width:901px){
+  body.drawer-open{ padding-right:440px; transition:padding-right .35s cubic-bezier(.22,.61,.36,1); }
+  body.drawer-open .header{ padding-right:0; }
+  body.drawer-open .overlay{ display:none; }
+}
+
 /* Toast */
 .toast{
   position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px);
