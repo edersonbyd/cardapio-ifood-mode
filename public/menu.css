@@ -197,6 +197,8 @@ body.drawer-open .cart-fab{ opacity:0; pointer-events:none; }
 }
 .btn-checkout:hover{ background:var(--whatsapp-dark); }
 .btn-checkout:disabled{ background:#ccc; box-shadow:none; }
+.btn-back{ margin-bottom:10px; background:#fff; color:var(--whatsapp); border:2px solid var(--whatsapp); box-shadow:0 6px 18px rgba(37,211,102,.18); }
+.btn-back:hover{ background:var(--whatsapp); color:#fff; }
 
 .overlay{
   position:fixed; inset:0; background:rgba(0,0,0,.45); opacity:0; visibility:hidden;
