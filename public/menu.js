@@ -317,7 +317,6 @@ function isDesktop() { return window.matchMedia("(min-width: 901px)").matches; }
 function openCart() {
   drawer.classList.add("open");
   document.body.classList.add("drawer-open");
-  if (!isDesktop()) overlay.classList.add("show");
 }
 function closeCart() {
   drawer.classList.remove("open");
