@@ -224,7 +224,7 @@ function addToCart(id) {
   cartBtn.classList.remove("bump");
   void cartBtn.offsetWidth;
   cartBtn.classList.add("bump");
-  openCart();
+  if (isDesktop()) openCart();
   toast(`${product.nome} adicionado!`);
 }
 
