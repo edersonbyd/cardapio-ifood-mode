@@ -322,10 +322,12 @@ function closeCart() {
   drawer.classList.remove("open");
   document.body.classList.remove("drawer-open");
   overlay.classList.remove("show");
+}
 function toggleCart() {
   if (drawer.classList.contains("open")) closeCart();
   else openCart();
 }
+
 
 // ====== Checkout WhatsApp ======
 function checkout() {
