@@ -49,6 +49,8 @@ async function init() {
 function bindEvents() {
   cartBtn.addEventListener("click", toggleCart);
   $("#close-cart").addEventListener("click", closeCart);
+  const backBtn = $("#back-to-menu");
+  if (backBtn) backBtn.addEventListener("click", closeCart);
   overlay.addEventListener("click", closeCart);
   $("#checkout-btn").addEventListener("click", checkout);
 
