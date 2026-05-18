@@ -177,13 +177,18 @@ export default function Cardapio() {
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="font-semibold text-base">{p.nome}</h3>
                   <p className="text-sm text-muted-foreground mt-1 flex-1">{p.descricao}</p>
-                  <div className="flex items-center justify-between mt-3">
-                    <span className="text-lg font-bold text-primary">
+                  <div className="flex items-center justify-between gap-2 mt-3">
+                    <span className="text-base sm:text-lg font-bold text-primary truncate">
                       {formatBRL(Number(p.preco))}
                     </span>
-                    <Button size="sm" onClick={() => addToCart(p)}>
-                      <Plus className="w-4 h-4 mr-1" />
-                      Adicionar
+                    <Button
+                      size="icon"
+                      onClick={() => addToCart(p)}
+                      className="rounded-full h-9 w-9 shrink-0 sm:h-9 sm:w-auto sm:px-3 sm:rounded-md"
+                      aria-label="Adicionar"
+                    >
+                      <Plus className="w-4 h-4" />
+                      <span className="hidden sm:inline ml-1">Adicionar</span>
                     </Button>
                   </div>
                 </div>
@@ -197,12 +202,12 @@ export default function Cardapio() {
       {!drawerOpen && (
         <button
           onClick={() => setDrawerOpen(true)}
-          className="fixed left-1/2 -translate-x-1/2 bottom-5 z-40 bg-[#25D366] text-white px-6 py-3.5 rounded-full font-semibold shadow-lg hover:bg-[#1ebe5b] transition inline-flex items-center gap-2.5"
+          className="fixed left-1/2 -translate-x-1/2 bottom-5 z-40 bg-primary text-primary-foreground px-6 py-3.5 rounded-full font-semibold shadow-lg hover:bg-primary/90 transition inline-flex items-center gap-2.5"
         >
           <ShoppingBag className="w-5 h-5" />
           Ver Sacola
           {count > 0 && (
-            <Badge variant="secondary" className="ml-1 bg-white text-[#25D366]">
+            <Badge variant="secondary" className="ml-1 bg-primary-foreground text-primary">
               {count}
             </Badge>
           )}
@@ -333,14 +338,14 @@ export default function Cardapio() {
 
           <button
             onClick={() => setDrawerOpen(false)}
-            className="w-full py-3 rounded-lg border-2 border-[#25D366] text-[#25D366] font-semibold hover:bg-[#25D366]/5 transition"
+            className="w-full py-3 rounded-lg border-2 border-primary text-primary font-semibold hover:bg-primary/5 transition"
           >
             Voltar para pedir mais
           </button>
           <button
             disabled={!cart.length}
             onClick={checkout}
-            className="w-full py-3.5 rounded-lg bg-[#25D366] text-white font-semibold shadow-md hover:bg-[#1ebe5b] disabled:opacity-50 disabled:cursor-not-allowed transition inline-flex items-center justify-center gap-2"
+            className="w-full py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold shadow-md hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition inline-flex items-center justify-center gap-2"
           >
             Finalizar Pedido pelo WhatsApp
           </button>
