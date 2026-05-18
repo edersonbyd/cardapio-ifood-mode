@@ -202,12 +202,12 @@ export default function Cardapio() {
       {!drawerOpen && (
         <button
           onClick={() => setDrawerOpen(true)}
-          className="fixed left-1/2 -translate-x-1/2 bottom-5 z-40 bg-[#25D366] text-white px-6 py-3.5 rounded-full font-semibold shadow-lg hover:bg-[#1ebe5b] transition inline-flex items-center gap-2.5"
+          className="fixed left-1/2 -translate-x-1/2 bottom-5 z-40 bg-primary text-primary-foreground px-6 py-3.5 rounded-full font-semibold shadow-lg hover:bg-primary/90 transition inline-flex items-center gap-2.5"
         >
           <ShoppingBag className="w-5 h-5" />
           Ver Sacola
           {count > 0 && (
-            <Badge variant="secondary" className="ml-1 bg-white text-[#25D366]">
+            <Badge variant="secondary" className="ml-1 bg-primary-foreground text-primary">
               {count}
             </Badge>
           )}
