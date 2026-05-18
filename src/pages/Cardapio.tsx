@@ -115,18 +115,18 @@ export default function Cardapio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b bg-card">
-        <div className="container mx-auto px-4 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+      <header className="border-b bg-card sticky top-0 z-30 shadow-sm">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3 min-w-0">
             <span className="text-3xl">🧁</span>
-            <div>
-              <h1 className="text-xl font-bold leading-tight">Confeitaria Amanda Santos</h1>
-              <p className="text-sm text-muted-foreground">Peça pelo WhatsApp</p>
+            <div className="min-w-0">
+              <h1 className="text-lg sm:text-xl font-bold leading-tight truncate">Confeitaria Amanda Santos</h1>
+              <p className="text-xs sm:text-sm text-muted-foreground">Peça pelo WhatsApp</p>
             </div>
           </div>
           <Link
             to="/admin"
-            className="text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground shrink-0"
             aria-label="Admin"
           >
             <Settings className="w-5 h-5" />
@@ -134,15 +134,15 @@ export default function Cardapio() {
         </div>
       </header>
 
-      <nav className="container mx-auto px-4 py-4 flex gap-2 overflow-x-auto">
+      <nav className="container mx-auto px-4 py-4 flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {["Todos", ...categorias.map((c) => c.nome)].map((c) => (
           <button
             key={c}
             onClick={() => setActiveCat(c)}
-            className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition ${
+            className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap border transition ${
               activeCat === c
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground hover:bg-muted/70"
+                ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                : "bg-card text-foreground border-border hover:border-primary"
             }`}
           >
             {c}
@@ -156,11 +156,11 @@ export default function Cardapio() {
         ) : filtered.length === 0 ? (
           <p className="text-center py-10 text-muted-foreground">Nenhum produto encontrado.</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
             {filtered.map((p) => (
               <article
                 key={p.id}
-                className="bg-card rounded-2xl overflow-hidden border shadow-sm hover:shadow-md transition flex flex-col"
+                className="bg-card rounded-2xl overflow-hidden border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex flex-col"
               >
                 <div className="aspect-[4/3] bg-muted overflow-hidden">
                   <img
