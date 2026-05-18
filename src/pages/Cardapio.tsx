@@ -175,9 +175,9 @@ export default function Cardapio() {
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-1">
-                  <h3 className="font-semibold text-base">{p.nome}</h3>
-                  <p className="text-sm text-muted-foreground mt-1 flex-1">{p.descricao}</p>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-3">
+                  <h3 className="font-semibold text-base line-clamp-2">{p.nome}</h3>
+                  <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{p.descricao}</p>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-auto pt-3">
                     <span className="text-base sm:text-lg font-bold text-primary">
                       {formatBRL(Number(p.preco))}
                     </span>
