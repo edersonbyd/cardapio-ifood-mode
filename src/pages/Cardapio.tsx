@@ -182,13 +182,10 @@ export default function Cardapio() {
                       {formatBRL(Number(p.preco))}
                     </span>
                     <Button
-                      size="icon"
                       onClick={() => addToCart(p)}
-                      className="rounded-full h-9 w-9 shrink-0 sm:h-9 sm:w-auto sm:px-3 sm:rounded-md"
-                      aria-label="Adicionar"
+                      className="shrink-0 rounded-md px-3 text-sm"
                     >
-                      <Plus className="w-4 h-4" />
-                      <span className="hidden sm:inline ml-1">Adicionar</span>
+                      Adicionar
                     </Button>
                   </div>
                 </div>
