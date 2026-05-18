@@ -199,7 +199,7 @@ export default function Cardapio() {
       {!drawerOpen && (
         <button
           onClick={() => setDrawerOpen(true)}
-          className="fixed left-1/2 -translate-x-1/2 bottom-5 z-40 bg-primary text-primary-foreground px-6 py-3.5 rounded-full font-semibold shadow-lg hover:bg-primary/90 transition inline-flex items-center gap-2.5"
+          className="fixed left-1/2 -translate-x-1/2 bottom-5 z-40 bg-primary text-primary-foreground px-6 py-3.5 rounded-full font-semibold shadow-lg hover:bg-primary/90 transition inline-flex items-center gap-2.5 whitespace-nowrap leading-none"
         >
           <ShoppingBag className="w-5 h-5" />
           Ver Sacola
