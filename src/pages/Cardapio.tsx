@@ -338,14 +338,14 @@ export default function Cardapio() {
 
           <button
             onClick={() => setDrawerOpen(false)}
-            className="w-full py-3 rounded-lg border-2 border-[#25D366] text-[#25D366] font-semibold hover:bg-[#25D366]/5 transition"
+            className="w-full py-3 rounded-lg border-2 border-primary text-primary font-semibold hover:bg-primary/5 transition"
           >
             Voltar para pedir mais
           </button>
           <button
             disabled={!cart.length}
             onClick={checkout}
-            className="w-full py-3.5 rounded-lg bg-[#25D366] text-white font-semibold shadow-md hover:bg-[#1ebe5b] disabled:opacity-50 disabled:cursor-not-allowed transition inline-flex items-center justify-center gap-2"
+            className="w-full py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold shadow-md hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition inline-flex items-center justify-center gap-2"
           >
             Finalizar Pedido pelo WhatsApp
           </button>
