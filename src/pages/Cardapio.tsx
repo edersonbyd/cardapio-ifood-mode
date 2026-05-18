@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingBag, Plus, Minus, Trash2, X, Settings } from "lucide-react";
+import logoAmanda from "@/assets/logo-amanda.jpeg";
 import { toast } from "sonner";
 
 const STORAGE_KEY = "cardapio_cart_v1";
