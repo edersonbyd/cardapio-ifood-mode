@@ -171,7 +171,7 @@ function CategoriasPanel({
           <Card key={c.id} className="p-3 flex items-center gap-3">
             <Input
               defaultValue={c.nome}
-              onBlur={(e) => e.target.value !== c.nome && updateField(c.id, "nome", e.target.value)}
+              onBlur={(e) => e.target.value !== c.nome && updateNome(c.id, e.target.value)}
               className="flex-1"
             />
             <Input
@@ -179,7 +179,7 @@ function CategoriasPanel({
               defaultValue={c.ordem}
               onBlur={(e) =>
                 Number(e.target.value) !== c.ordem &&
-                updateField(c.id, "ordem", Number(e.target.value))
+                updateOrdem(c.id, Number(e.target.value))
               }
               className="w-20"
             />
