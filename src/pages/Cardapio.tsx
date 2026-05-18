@@ -177,13 +177,13 @@ export default function Cardapio() {
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="font-semibold text-base">{p.nome}</h3>
                   <p className="text-sm text-muted-foreground mt-1 flex-1">{p.descricao}</p>
-                  <div className="flex items-center justify-between gap-2 mt-3">
-                    <span className="text-base sm:text-lg font-bold text-primary truncate">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-3">
+                    <span className="text-base sm:text-lg font-bold text-primary">
                       {formatBRL(Number(p.preco))}
                     </span>
                     <Button
                       onClick={() => addToCart(p)}
-                      className="shrink-0 rounded-md px-3 text-sm"
+                      className="shrink-0 rounded-md px-3 text-sm w-full sm:w-auto"
                     >
                       Adicionar
                     </Button>
