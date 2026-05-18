@@ -135,11 +135,13 @@ function CategoriasPanel({
     }
   };
 
-  const updateField = async (id: string, field: string, value: string | number) => {
-    const { error } = await supabase
-      .from("categorias")
-      .update({ [field]: value })
-      .eq("id", id);
+  const updateNome = async (id: string, nome: string) => {
+    const { error } = await supabase.from("categorias").update({ nome }).eq("id", id);
+    if (error) toast.error(error.message);
+    else reload();
+  };
+  const updateOrdem = async (id: string, ordem: number) => {
+    const { error } = await supabase.from("categorias").update({ ordem }).eq("id", id);
     if (error) toast.error(error.message);
     else reload();
   };
