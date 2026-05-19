@@ -18,6 +18,7 @@ export type Produto = {
 export type CartItem = {
   id: string;
   nome: string;
+  descricao?: string;
   preco: number;
   imagem: string;
   qty: number;

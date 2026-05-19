@@ -82,7 +82,7 @@ export default function Cardapio() {
       if (ex) return cur.map((i) => (i.id === p.id ? { ...i, qty: i.qty + 1 } : i));
       return [
         ...cur,
-        { id: p.id, nome: p.nome, preco: Number(p.preco), imagem: p.imagem, qty: 1 },
+        { id: p.id, nome: p.nome, descricao: p.descricao, preco: Number(p.preco), imagem: p.imagem, qty: 1 },
       ];
     });
     toast.success(`${p.nome} adicionado!`);
@@ -102,9 +102,10 @@ export default function Cardapio() {
 
   const checkout = () => {
     if (!cart.length) return;
-    const lines = cart.map(
-      (i) => `• ${i.nome} x${i.qty} — ${formatBRL(i.preco * i.qty)}`,
-    );
+    const lines = cart.map((i) => {
+      const desc = i.descricao?.trim() ? ` (${i.descricao.trim()})` : "";
+      return `• ${i.nome}${desc} x${i.qty} — ${formatBRL(i.preco * i.qty)}`;
+    });
     const entrega = delivery === "delivery" ? "Delivery" : "Retirar no estabelecimento";
     let msg = `*Novo Pedido* 🛍️\n\n${lines.join(
       "\n",
